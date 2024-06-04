@@ -50,3 +50,10 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+/** Posts story to server SUBPART 2B BULEET POINT 4 TODO*/ 
+
+function postStory(){
+  console.debug("postStory");
+
+}
