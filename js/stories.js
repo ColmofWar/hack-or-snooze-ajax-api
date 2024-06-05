@@ -53,7 +53,23 @@ function putStoriesOnPage() {
 
 /** Posts story to server SUBPART 2B BULEET POINT 4 TODO*/ 
 
-function postStory(){
+async function postStory(evt){
   console.debug("postStory");
+  evt.preventDefault();
 
+  const title = $("#story-title").val();
+  const author = $("#story-title").val();
+  const url = $("story-url").val();
+  const newStory = {title, author, url}
+  const user = currentUser.username;
+  
+  const story = await storyList.addStory(user, newStory);
+
+  const $story = generateStoryMarkup(story);
+  $allStoriesList.prepend($story);
+
+  $storyForm.slideUp("slow");
+  $storyForm.trigger("reset");
 }
+
+$storyForm.on("submit", postStory);

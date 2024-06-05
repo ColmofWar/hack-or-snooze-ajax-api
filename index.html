@@ -101,14 +101,13 @@
 <section class="story-post-forms-container container">
   <!-- Story Post form -->
   <form
-    action="#"
+    action=""
     id="story-form"
-    class="story-form hidden"
-    method="post">
+    class="story-form hidden">
     <h4>Post Story</h4>
     <div class="story-post">
-      <label for="author-name">author</label>
-      <input id="author-name">
+      <label for="story-author">author</label>
+      <input id="story-author">
     </div>
     <div class="story-post">
       <label for="story-title">title</label>
@@ -116,7 +115,7 @@
     </div>
     <div class="story-post">
       <label for="story-url">url</label>
-      <input id="story-url">
+      <input id="story-url" required type="url">
     </div>
     <button type="submit">submit</button>
   </form>
