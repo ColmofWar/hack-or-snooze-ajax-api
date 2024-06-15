@@ -210,9 +210,10 @@ class User {
   async addFavorite(story){
     this.favorites.push(story);
     const token = this.loginToken;
+    const method = "POST"
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
-      method: "POST",
+      method: method,
       data: { token },
     });
   }
@@ -221,11 +222,12 @@ class User {
   * Updates API
   */
   async removeFavorite(story){
-    this.favorites.push(story);
+    this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
     const token = this.loginToken;
+    const method = "DELETE"
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
-      method: "DELETE",
+      method: method,
       data: { token },
     });
   }
@@ -233,7 +235,6 @@ class User {
   /** Returns true or false after checking if story is user's favorite*/
   isFavorite(story){
     const test = this.favorites.some(s => (s.storyId === story.storyId));
-    console.log(test);
     return test;
   }
 }

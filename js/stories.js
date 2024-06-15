@@ -16,6 +16,7 @@ async function getAndShowStoriesOnStart() {
 
 function getStarHTML(story, user) {
   const isFavorite = user.isFavorite(story);
+  console.log(isFavorite);
   const starType = isFavorite ? "fas" : "far";
   return `
       <span class="star">
@@ -37,7 +38,7 @@ function generateStoryMarkup(story) {
 
   /**check if current user is logged in */
   const loggedIn = Boolean(currentUser);
-
+  
   return $(`
       <li id="${story.storyId}">
         <div>
@@ -132,13 +133,13 @@ async function toggleStoryFavorite(evt) {
   // see if the item is already favorited (checking by presence of star)
   if ($tgt.hasClass("fas")) {
     // currently a favorite: remove from user's fav list and change star
-    await currentUser.removeFavorite(story);
+    await currentUser.addFavorite(story);
     $tgt.closest("i").toggleClass("fas far");
   } else {
     // currently not a favorite: do the opposite
-    await currentUser.addFavorite(story);
+    await currentUser.removeFavorite(story);
     $tgt.closest("i").toggleClass("fas far");
   }
 }
 
-$storiesLists.on("click", ".star", toggleStoryFavorite);
+$allStoriesList.on("click", ".star", toggleStoryFavorite);
