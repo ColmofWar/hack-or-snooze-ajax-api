@@ -36,6 +36,7 @@
 <nav>
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
+    <a class="nav-link hidden" href="#" id="nav-favorites">favorites</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
@@ -53,6 +54,9 @@
 
   <!-- List of all stories -->
   <ol id="all-stories-list" class="stories-list"></ol>
+
+  <!-- List of favorite stories -->
+  <ol id="favorite-stories" class="hidden stories-list"></ol>
 
 </section>
 
@@ -103,7 +107,7 @@
   <form
     action=""
     id="story-form"
-    class="story-form hidden">
+    class="hidden">
     <h4>Post Story</h4>
     <div class="story-post">
       <label for="story-author">author</label>

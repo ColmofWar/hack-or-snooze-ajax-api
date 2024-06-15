@@ -204,4 +204,36 @@ class User {
       return null;
     }
   }
+  /** Adds favorites to User story list
+   * Updates API
+   */
+  async addFavorite(story){
+    this.favorites.push(story);
+    const token = this.loginToken;
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: "POST",
+      data: { token },
+    });
+  }
+
+  /** Removes favorites from User story list
+  * Updates API
+  */
+  async removeFavorite(story){
+    this.favorites.push(story);
+    const token = this.loginToken;
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: "DELETE",
+      data: { token },
+    });
+  }
+
+  /** Returns true or false after checking if story is user's favorite*/
+  isFavorite(story){
+    const test = this.favorites.some(s => (s.storyId === story.storyId));
+    console.log(test);
+    return test;
+  }
 }
