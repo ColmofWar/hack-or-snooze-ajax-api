@@ -31,9 +31,21 @@
 }
 
 .story-author {
-  margin-left: 2em;
+  margin-left: 2.2em;
+  color: green;
 }
 
 .story-user {
-  display: block;
+  margin-left: 2.2em;
+  color: orange;
+}
+.star,
+.trash {
+  font-size: 0.75rem;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.trash:hover {
+  color: crimson;
 }
